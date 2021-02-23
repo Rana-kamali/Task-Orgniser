@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const TaskForm = (props) => {
   const [formState , setFormState] = useState({
     name: "",
-select:"",
+    status:"",
 date:"",
 comment: ""
   })
@@ -17,39 +17,46 @@ comment: ""
   const handleSubmit = (e)=>{
     e.preventDefault ();
     console.log("handle submit");
-    props.submit(formState.name, formState.date,formState.comment,formState.select)
+    props.submit(formState.name, formState.date,formState.comment,formState.status)
   }
   return (
     <div>
       <h2>Add Task</h2>
       <form onSubmit={handleSubmit}>
+        <div>
         <label>
           Name
           <input name="name" 
           onChange={handleChange}
           value={formState.name}></input>
         </label>
-
-        <label>
+        </div>
+       
+<div>
+<label>
           Due Date
           <input name="date" 
           onChange={handleChange}
           value={formState.date}></input>
         </label>
-        <select name="select" 
+</div>
+       <div>
+       <select name="select" 
         onChange={handleChange}
-        value={formState.select}>
+        value={formState.status}>
           <option>Assigned</option>
           <option>Working</option>
           <option>Completed</option>
           <option>None</option>
         </select>
-        <label>
+       </div>
+        <div> <label>
           Comment
           <input name="comment" 
           onChange={handleChange}
           value={formState.comment}></input>
-        </label>
+        </label></div>
+       
 
         <button type="submit">Add List</button>
       </form>
@@ -58,36 +65,5 @@ comment: ""
 };
 export { TaskForm };
 
-{
-  /* <div>
-<h1>Create a Task</h1>
-  
-<label>
-   Name
-   <input name="name" value=""></input>
- </label>
-  
-  
- <label>
-   Due Date
-   <input name="dueDate" value=""></input>
- </label> */
-}
-
-{
-  /* <label>Status
-  <select>
-   <option>Assigned</option>
-   <option >Working</option>
-   <option>Completed</option>
-   <option >None</option>
- </select>
- <label>
-   Comment
-   <input name="comment" value=""></input>
- </label>
 
 
-
-</div> */
-}
