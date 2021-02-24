@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 const session =  require("express-session");
 
-const internalRoutes = require("./routes/internalRouts");
+
+const projectRoutes = require("./routes/projectRoutes");
+const userRoutes = require("./routes/userRoutes");
+const todoRoutes = require("./routes/todoRoutes");
+
 // const modelSchema = require("./models/ModelSchema");
 // const userRoutes = require("./models/userSchema");
 
@@ -23,15 +27,14 @@ mongoose.connect('mongodb://localhost:27017/TaskOrgniser', {
   useCreateIndex: true
 });
 
-const userRoutes = require("./routes/userRoutes");
-const projectRoutes = require("./routes/todo");
+
 const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.use("/internal", internalRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/project", projectRoutes);
+app.use("/api/todo", todoRoutes);
 
 app.get('/', function (req, res) {
   res.send(` app is listening at http://localhost:${port}`)

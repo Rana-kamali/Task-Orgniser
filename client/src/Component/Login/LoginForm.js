@@ -8,20 +8,7 @@ function LoginForm({ Login, error }) {
     Login(details);
   };
 
-  // componentDidMount (){
-  //   fetch("http://localhost:9000/controllers/authController/login", {
-  //     method: "POST",
-  //     headers:{
-  //       "Content-Type": "application/json",
-  //     }
-  //   }).then((response) => {
-  //     console.log("response", response)
-  //     return response.json();
-  //   }).then((LoginData) =>{
-  //     console.log("LoginData", LoginData)
-  //     this.useState({details: LoginData})
-  //   })
-  // }
+ 
   return (
     <form onSubmit={submitHandler}>
       <div className="form-inner">

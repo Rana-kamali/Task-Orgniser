@@ -4,9 +4,9 @@ const infoSchema = mongoose.Schema({
    status: String,
    date: Date,
    comment: String,
-   categoryId: {
+   projectId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "category",
+      ref: "project",
     },
 });
 module.exports = mongoose.model("taskCollection", infoSchema);
