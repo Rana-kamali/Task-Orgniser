@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+
+
 const TaskForm = (props) => {
   const [formState, setFormState] = useState({
     name: "",
@@ -26,7 +28,12 @@ const HandleTaskSubmit = (name,status,date,comment,projectId) => {
   });
 };
 
-  useEffect(() => {
+  useEffect((projectName) => {
+  //   const project = { projectName:};
+  //   const newProjects = [...projects];
+  //   newProjects.push(project);
+  //   console.log("new projects: " ,project)
+
     fetch("http://localhost:3000/api/project/all", {
       method: "GET",
       headers: {
@@ -34,13 +41,13 @@ const HandleTaskSubmit = (name,status,date,comment,projectId) => {
       },
     })
       .then((response) => {
-        console.log("movies respond: ", response);
+        console.log("Task respond: ", response);
         return response.json();
       })
-      .then((dropdown) => {
+      .then((dropdown,i) => {
         console.log("dropdownData:", dropdown);
-        // call to set state
-        setProjects(dropdown._id);
+        
+        setProjects(dropdown);
       });
   }, []);
 
@@ -119,15 +126,18 @@ const HandleTaskSubmit = (name,status,date,comment,projectId) => {
               
               return <option value={project._id}>{project.projectName}</option>;
             })} */}
-            {/* {props.projects.map((project) => {
-              return <option value={project._id}>{project.projectName}</option>;
-            })} */}
+            {props.projects.map((project, index) => {
+              return <option key={index} value={project._id}>{project.projectName}</option>;
+            })}
           </select>
         </div>
 
         <button type="submit" onChange={handleChange} onSubmit={HandleTaskSubmit} >Add List</button>
       </form>
+
+     
     </div>
+    
   );
 };
 export { TaskForm };

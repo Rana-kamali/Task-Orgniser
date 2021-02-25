@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm"
 import {Welcome} from "../NewList/Welcome"
-import{TaskForm} from "../NewList/TaskForm"
+// import{TaskForm} from "../NewList/TaskForm"
+import { AddTask } from "../NewList/AddTask";
+
 
 function LoginApp() {
   const adminUser = {
@@ -37,7 +39,8 @@ function LoginApp() {
     <h2> Welcome, <span>{user.name}</span></h2>
 <button onClick={logout}>Logout</button>
 <Welcome/>
-<TaskForm/>
+{/* <TaskForm projects={[]}/> */}
+<AddTask projects={[]}/>
 </div>
 
 ):(

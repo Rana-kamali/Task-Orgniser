@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-import {TaskForm} from "../NewList/TaskForm"
+// import {TaskForm} from "../NewList/TaskForm"
+import {AddTask} from "../NewList/AddTask"
 function LoginForm({ Login, error }) {
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
   const submitHandler = (e) => {
@@ -13,7 +13,7 @@ function LoginForm({ Login, error }) {
     <form onSubmit={submitHandler}>
       <div className="form-inner">
         <h2>Login</h2>
-        {(error !="") ?( <div className="error">{error}</div>) :""}
+        {(error !=="") ?( <div className="error">{error}</div>) :""}
         <div className="form-group">
           <label htmlFor="name">Name: </label>
           <input
@@ -50,7 +50,8 @@ function LoginForm({ Login, error }) {
         </div>
         <button type="submit" value="LOGIN">LOGIN</button>
       </div>
-      <TaskForm/>
+      {/* <TaskForm projects={[]} /> */}
+      <AddTask projects={[]}/ >
     </form>
    
   );
