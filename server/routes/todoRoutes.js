@@ -18,15 +18,15 @@ router.post('/add', (req, res) => {
 
 
 
-router.get("/getById/:id", (req,res) => {
-    todoModel.find({categoryId: req.params.id}).then((data) => {
-        console.log(data);
+router.get("/all/:projectId", (req,res) => {
+    todoModel.find({projectId: req.params.projectId}).then((data) => {
         res.send(data);
     }).catch(() =>{
-        console.log("its wrong")
-        res.status(404).send("category ID is wrong")
+        res.status(404).send("invalid project")
     })
-} )
+
+ 
+})
 
 router.patch("/update/:id", (request,response) => {
 

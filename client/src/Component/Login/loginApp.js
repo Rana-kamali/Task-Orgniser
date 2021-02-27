@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import LoginForm from "./LoginForm"
 import {Welcome} from "../NewList/Welcome"
 // import{TaskForm} from "../NewList/TaskForm"
-import { AddTask } from "../NewList/AddTask";
+// import { AddTask } from "../NewList/AddTask";
+
 
 
 function LoginApp() {
@@ -33,6 +34,7 @@ function LoginApp() {
     setUser ({name: "", email: ""  })
   };
 
+
   return <div className="Login">
 {(user.email !=="") ? (
 <div className = "welcome">
@@ -40,7 +42,9 @@ function LoginApp() {
 <button onClick={logout}>Logout</button>
 <Welcome/>
 {/* <TaskForm projects={[]}/> */}
-<AddTask projects={[]}/>
+{/* <AddTask projects={[]}/> */}
+
+
 </div>
 
 ):(
