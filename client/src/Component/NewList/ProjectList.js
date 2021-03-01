@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import TaskTable from "./TaskTable"
+import TaskTable from "./TaskTable";
+import Delete from "./Action/Delete";
+import Edit from "./Action/Edit";
+
 const ProjectList = (props) => {
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
@@ -38,7 +41,7 @@ console.log("project id", e.target.value)
         return response.json();
       })
       .then((dropdown, i) => {
-        console.log("dropdownData:", dropdown);
+        // console.log("dropdownData:", dropdown);
 
         setProjects(dropdown);
       });
@@ -48,12 +51,13 @@ console.log("project id", e.target.value)
     <div>
       <select  onChange={handleClick}>
         {projects.map((el) => {
-          console.log("el, ", el.projectId);
           return <option value={el._id}>{el.projectName}</option>;
         })}
         ;
       </select>
       <TaskTable tasks={tasks}/>
+      <Delete tasks={tasks}/>
+      <Edit/>
     </div>
   );
 };
