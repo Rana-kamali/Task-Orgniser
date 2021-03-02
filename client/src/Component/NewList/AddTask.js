@@ -17,7 +17,7 @@ function AddTask(props) {
     projectId: "",
   });
   const [projects, setProjects] = useState([]);
-
+  const [taskEdit, setTaskEdit] = useState();
   const handleTaskSubmit = (name, status, date, comment, projectId) => {
     const newTask = {
       name: name,
@@ -26,8 +26,8 @@ function AddTask(props) {
       comment: comment,
       projectId: projectId,
     };
-    console.log("form state", formState)
-    const newTasks = {...formState};
+    console.log("form state", formState);
+    const newTasks = { ...formState };
     // newTasks.push(newTask);
     setFormState(newTasks);
     fetch("http://localhost:3000/api/todo/add", {
@@ -36,12 +36,14 @@ function AddTask(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newTasks),
-    }).then((response) => {
-      console.log("tasks :", response);
-      return response.json();
-    }).then((data) => {
-      console.log("data Json: ", data)
     })
+      .then((response) => {
+        console.log("tasks :", response);
+        return response.json();
+      })
+      .then((data) => {
+        console.log("data Json: ", data);
+      });
     setOpen(false);
   };
   useEffect((projectName) => {
@@ -67,13 +69,10 @@ function AddTask(props) {
       });
   }, []);
 
-
-  
-
   const handleChange = (e) => {
     const newState = { ...formState };
     newState[e.target.name] = e.target.value;
-    console.log("target value ", e.target.value)
+    console.log("target value ", e.target.value);
     console.log("new state", newState);
     setFormState(newState);
   };
@@ -88,6 +87,12 @@ function AddTask(props) {
       formState.projectId
     );
   };
+  ///------------get index---------
+  const handleEditClick = (index) => {
+    console.log("get index", index);
+    const taskIndex = formState[index];
+    setTaskEdit(taskIndex);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -99,8 +104,13 @@ function AddTask(props) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
+      <Button
+        variant="outlined"
+        handleClick={handleEditClick}
+        color="primary"
+        onClick={handleClickOpen}
+      >
+        Edit
       </Button>
       <Dialog
         open={open}
@@ -137,7 +147,7 @@ function AddTask(props) {
             value={formState.date}
           />
           <select
-          id= "select"
+            id="select"
             name="status"
             onChange={handleChange}
             value={formState.status}
@@ -147,11 +157,11 @@ function AddTask(props) {
             <option>Completed</option>
             <option>None</option>
           </select>
-          
-          <select id ="projectId" onChange={handleChange} name="projectId">
-          {projects.map((project) => {
-             return <option value={project._id}>{project.projectName}</option>
-          })}
+
+          <select id="projectId" onChange={handleChange} name="projectId">
+            {projects.map((project) => {
+              return <option value={project._id}>{project.projectName}</option>;
+            })}
           </select>
           <TextField
             autoFocus
@@ -169,11 +179,7 @@ function AddTask(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button
-            onClick={handleTaskSubmit}
-            
-            color="primary"
-          >
+          <Button onClick={handleTaskSubmit} color="primary">
             Save
           </Button>
         </DialogActions>

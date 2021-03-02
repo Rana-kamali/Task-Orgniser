@@ -27,6 +27,14 @@ router.get("/all/:projectId", (req,res) => {
 
  
 })
+router.get("/:id", (req,res)=>{
+  todoModel.findById(req.params.id).then ((data)=>{
+    res.send(data);
+  }).catch(()=>{
+    res.status(404).send("not found")
+
+  })
+})
 
 router.patch("/update/:id", (request,response) => {
 
@@ -34,6 +42,9 @@ router.patch("/update/:id", (request,response) => {
       new: true,
       upsert: true })
     .then((data) => {
+      console.log("body: " ,request.params.id)
+      console.log("body: " , request.body)
+
       console.log("Update successful!");
       response.send(data);
     }).catch (()=>{

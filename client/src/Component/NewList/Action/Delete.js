@@ -26,7 +26,16 @@ return taskEl._id===taskEl._id;
     }
     return (
         <div>
-        
+        <ul>
+            {props.tasks.map((el, index) => (
+              <li key={index} onsubmit="handleDelete" 
+            //   onClick={() => props.handleClick(index)}
+              >
+
+                 {el.name}
+              </li>
+            ))}
+          </ul>
         </div>
     )
 }

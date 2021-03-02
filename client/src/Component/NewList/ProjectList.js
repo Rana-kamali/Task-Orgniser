@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import TaskTable from "./TaskTable";
 import Delete from "./Action/Delete";
-import Edit from "./Action/Edit";
+
 
 const ProjectList = (props) => {
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
 
-//   const [list, setList] = useState({
-//   });
 
   const handleClick = (e) => {
 console.log("project id", e.target.value)
@@ -57,7 +55,7 @@ console.log("project id", e.target.value)
       </select>
       <TaskTable tasks={tasks}/>
       <Delete tasks={tasks}/>
-      <Edit/>
+      
     </div>
   );
 };

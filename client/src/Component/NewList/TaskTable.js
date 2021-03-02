@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
+import Edit from "./Action/Edit";
 
 const useStyles = makeStyles({
   table: {
@@ -16,8 +17,31 @@ const useStyles = makeStyles({
 });
 
 const TaskTable = (props) => {
+  const[showEdit, setShowEdit] =useState("");
   const [tasks, setTasks] = useState([]);
-  const [taskDelete, setTaskDelete]=useState({
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+
+
+    fetch("http://localhost:3000/api/project/all", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log("Task respond: ", response);
+        return response.json();
+      })
+      .then((dropdown, i) => {
+        // console.log("dropdownData:", dropdown);
+
+        setProjects(dropdown);
+      });
+  }, []);
+
+
+  const [taskDelete, setTaskDelete] = useState({
     name: "",
     status: "",
     date: "",
@@ -54,28 +78,34 @@ const TaskTable = (props) => {
     setTasks(props.tasks);
   }, [props.tasks]);
 
-  
-
-  const handleDelete =(tasks)=>{
+  const handleDelete = (tasks) => {
     console.log("handle tasks delete", tasks);
-    const foundTask = taskDelete.findIndex((taskEl) =>{
-console.log("task el", taskEl);
-return taskEl._id===taskEl._id;
+    const foundTask = taskDelete.findIndex((taskEl) => {
+      console.log("task el", taskEl);
+      return taskEl._id === taskEl._id;
     });
     const newLists = [...taskDelete];
     newLists[foundTask] = taskDelete;
     setTaskDelete(newLists);
-    fetch(`http://localhost:3000/api/todo/delete/${tasks.target.value}`,{
-        method:"Delete",
-        headers:{
-    "Content-Type": "application/json",
-
-        }
-    }).then((response) =>{
-        console.log("deleted")
-    })
+    fetch(`http://localhost:3000/api/todo/delete/${tasks.target.value}`, {
+      method: "Delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      console.log("deleted");
+    });
+  };
+  // const handleEdit = (id) => {
+  //   console.log("id: ", id )
+  //   setShowEdit(id);
     
-}
+  // };
+   const handleEdit = (id) => {
+    console.log("id: ", id )
+    setShowEdit(id);
+    
+  };
 
   return (
     <div>
@@ -91,7 +121,6 @@ return taskEl._id===taskEl._id;
               <TableCell align="right">Comment</TableCell>
               <TableCell align="right">Action</TableCell>
               <TableCell align="right"></TableCell>
-
             </TableRow>
           </TableHead>
           <TableBody></TableBody>
@@ -111,10 +140,20 @@ return taskEl._id===taskEl._id;
                 <TableCell name="comment" align="right" onChange={handleChange}>
                   {el.comment}
                 </TableCell>
-                <TableCell name="edit" align="right" onChange={handleChange}>
-                  <EditIcon />
+                <TableCell name="edit" align="right">
+                  <EditIcon 
+                    onClick={() => {
+                      handleEdit(el._id);
+                    }}
+                  />
                 </TableCell>
-                <TableCell name="delete" align="right" submit={handleDelete}>
+                <TableCell
+                  name="delete"
+                  align="right"
+                  type="submit"
+                  onSubmit={handleDelete}
+              
+                >
                   <DeleteForeverIcon />
                 </TableCell>
               </TableRow>
@@ -122,6 +161,8 @@ return taskEl._id===taskEl._id;
           })}
         </Table>
       </TableContainer>
+      {showEdit && <Edit projects={projects} showEdit={showEdit} onClick= {()=>{ setShowEdit("")}}/>}
+      
     </div>
   );
 };
