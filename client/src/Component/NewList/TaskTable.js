@@ -17,12 +17,11 @@ const useStyles = makeStyles({
 });
 
 const TaskTable = (props) => {
-  const[showEdit, setShowEdit] =useState("");
+  const [showEdit, setShowEdit] = useState("");
+  const [showDelete, setShowDelete] = useState("");
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
   useEffect(() => {
-
-
     fetch("http://localhost:3000/api/project/all", {
       method: "GET",
       headers: {
@@ -41,13 +40,6 @@ const TaskTable = (props) => {
   }, []);
 
 
-  const [taskDelete, setTaskDelete] = useState({
-    name: "",
-    status: "",
-    date: "",
-    comment: "",
-    projectId: "",
-  });
 
   const classes = useStyles();
   const [list, setList] = useState({
@@ -78,33 +70,28 @@ const TaskTable = (props) => {
     setTasks(props.tasks);
   }, [props.tasks]);
 
-  const handleDelete = (tasks) => {
-    console.log("handle tasks delete", tasks);
-    const foundTask = taskDelete.findIndex((taskEl) => {
-      console.log("task el", taskEl);
-      return taskEl._id === taskEl._id;
-    });
-    const newLists = [...taskDelete];
-    newLists[foundTask] = taskDelete;
-    setTaskDelete(newLists);
-    fetch(`http://localhost:3000/api/todo/delete/${tasks.target.value}`, {
-      method: "Delete",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => {
-      console.log("deleted");
-    });
-  };
-  // const handleEdit = (id) => {
-  //   console.log("id: ", id )
-  //   setShowEdit(id);
-    
-  // };
-   const handleEdit = (id) => {
-    console.log("id: ", id )
+  
+
+  const handleEdit = (id) => {
+    console.log("id: ", id);
     setShowEdit(id);
-    
+  };
+  // const handleDelete = (id) => {
+  //   console.log("id: ", id);
+  //   setShowDelete(id);
+  // };
+  const handleDelete = (id) => {
+    console.log("id: ", id);
+    setShowDelete(id);
+    fetch(`http://localhost:3000/api/todo/delete/${id}`,{
+                  method:"Delete",
+                  headers:{
+              "Content-Type": "application/json",
+      
+                  }
+              }).then((response) =>{
+                  console.log("deleted")
+              })
   };
 
   return (
@@ -141,28 +128,34 @@ const TaskTable = (props) => {
                   {el.comment}
                 </TableCell>
                 <TableCell name="edit" align="right">
-                  <EditIcon 
+                  <EditIcon
                     onClick={() => {
                       handleEdit(el._id);
                     }}
                   />
                 </TableCell>
-                <TableCell
-                  name="delete"
-                  align="right"
-                  type="submit"
-                  onSubmit={handleDelete}
-              
-                >
-                  <DeleteForeverIcon />
+                <TableCell name="delete" align="right" type="submit">
+                  <DeleteForeverIcon
+                    onClick={() => {
+                      handleDelete(el._id);
+                    }}
+                  />
                 </TableCell>
               </TableRow>
             );
           })}
         </Table>
       </TableContainer>
-      {showEdit && <Edit projects={projects} showEdit={showEdit} onClick= {()=>{ setShowEdit("")}}/>}
-      
+      {showEdit && (
+        <Edit
+          projects={projects}
+          showEdit={showEdit}
+          onClick={() => {
+            setShowEdit("");
+          }}
+
+        />
+      )}
     </div>
   );
 };

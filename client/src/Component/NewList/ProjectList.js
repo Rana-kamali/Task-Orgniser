@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TaskTable from "./TaskTable";
-import Delete from "./Action/Delete";
+
 
 
 const ProjectList = (props) => {
@@ -54,7 +54,7 @@ console.log("project id", e.target.value)
         ;
       </select>
       <TaskTable tasks={tasks}/>
-      <Delete tasks={tasks}/>
+      
       
     </div>
   );
