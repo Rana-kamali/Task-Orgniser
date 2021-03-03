@@ -5,6 +5,8 @@
 body {
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* background-image: url("https://cdn.pixabay.com/photo/2017/09/05/23/02/background-2719576_960_720.jpg"); */
+
 }
 .form-inner {
   font-family: sans-serif;
@@ -57,3 +59,7 @@ p{
 .create-task{
  text-align: right;
 }
+.MuiButton-label{
+  width: 100px;
+}
+

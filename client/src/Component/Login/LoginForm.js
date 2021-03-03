@@ -12,6 +12,7 @@ function LoginForm({ Login, error }) {
   };
 
   return (
+    <div className="login">
     <form onSubmit={submitHandler}>
       <div className="form-inner">
         <h2>Login</h2>
@@ -57,7 +58,7 @@ function LoginForm({ Login, error }) {
       <ProjectList projects={[]} />
       
     </form>
-   
+    </div>
   );
 }
 
