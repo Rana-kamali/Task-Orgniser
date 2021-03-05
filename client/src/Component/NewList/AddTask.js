@@ -110,7 +110,7 @@ function AddTask(props) {
         color="primary"
         onClick={handleClickOpen}
       >
-        Edit
+        Add task
       </Button>
       <Dialog
         open={open}

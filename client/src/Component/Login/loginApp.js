@@ -38,7 +38,7 @@ function LoginApp() {
   return <div className="Login">
 {(user.email !=="") ? (
 <div className = "welcome">
-    <h2> Welcome, <span>{user.name}</span></h2>
+    <h2> Welcome, <p3>{user.name}</p3></h2>
 <button onClick={logout}>Logout</button>
 <Welcome/>
 {/* <TaskForm projects={[]}/> */}

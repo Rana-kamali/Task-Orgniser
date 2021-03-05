@@ -76,10 +76,7 @@ const TaskTable = (props) => {
     console.log("id: ", id);
     setShowEdit(id);
   };
-  // const handleDelete = (id) => {
-  //   console.log("id: ", id);
-  //   setShowDelete(id);
-  // };
+  
   const handleDelete = (id) => {
     console.log("id: ", id);
     setShowDelete(id);
