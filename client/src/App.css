@@ -4,7 +4,9 @@ body {
   background-repeat:no-repeat;
   background-size: auto;
   background-size: cover;
+
 }
+
 .App {
   text-align: center;
 }
@@ -74,4 +76,8 @@ form{
 }
 p3{
   color: #f50057;
+}
+.modal{
+  background-color: white;
+  margin-top: 50px;
 }

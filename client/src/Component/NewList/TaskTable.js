@@ -21,6 +21,8 @@ const TaskTable = (props) => {
   const [showDelete, setShowDelete] = useState("");
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [open, setOpen] = React.useState(false);
+
   useEffect(() => {
     fetch("http://localhost:3000/api/project/all", {
       method: "GET",
@@ -91,6 +93,11 @@ const TaskTable = (props) => {
               })
   };
 
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+
+
   return (
     <div>
       <TableContainer onSubmit={handleSubmit}>
@@ -125,10 +132,14 @@ const TaskTable = (props) => {
                   {el.comment}
                 </TableCell>
                 <TableCell name="edit" align="right">
-                  <EditIcon
+                  <EditIcon 
+                  // onClick={handleShow}
+                 
                     onClick={() => {
-                      handleEdit(el._id);
+                    handleEdit(el._id);
                     }}
+                    
+                    
                   />
                 </TableCell>
                 <TableCell name="delete" align="right" type="submit">
