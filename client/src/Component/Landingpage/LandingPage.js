@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import LoginApp from "../Login/loginApp"
 import Button from "@material-ui/core/Button";
@@ -12,17 +12,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const LandingPage = () => {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
   const classes = useStyles();
   return (
       <Router>
           <div className="landingBG">
-    <div className="landing">
-     <Link to="/login"> <Button variant="contained" color="secondary">
+        <div className="landing">
+          {!userLoggedIn &&      <Link to="/login"> <Button variant="contained" color="secondary">
         Login
       </Button>
-      </Link>
+      </Link>}
+
       <Switch>
-          <Route path="/login"><LoginApp/></Route>
+            <Route path="/login"><LoginApp setUserLoggedIn={ setUserLoggedIn}/></Route>
       </Switch>
     </div>
     </div>

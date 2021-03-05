@@ -6,7 +6,7 @@ import {Welcome} from "../NewList/Welcome"
 
 
 
-function LoginApp() {
+function LoginApp(props) {
   const adminUser = {
     email: "admin@admin.com",
     password: "admin123",
@@ -23,6 +23,7 @@ function LoginApp() {
             name: details.name,
             email: details.email,
         })
+      props.setUserLoggedIn(true);
     }else {
         console.log("Details not match")
         setError("Details not match")
@@ -32,6 +33,7 @@ function LoginApp() {
   const logout = () => {
     console.log("loggedOut");
     setUser ({name: "", email: ""  })
+    props.setUserLoggedIn(false);
   };
 
 

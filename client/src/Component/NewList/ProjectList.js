@@ -7,6 +7,30 @@ const ProjectList = (props) => {
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
 
+    // ash
+  // const [onProjectSave, setOnProjectSave] = useState(false); 
+
+
+  // ash code
+// useEffect(()=> {
+//     if(onProjectSave) { 
+//       fetch(`http://localhost:3000/api/todo/all/${e.target.value}`, {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       })
+//         .then((response) => {
+//           console.log("response", response);
+//           return response.json();
+//         })
+//         .then((tasks) => {
+//           console.log("Project data: ", tasks);
+//           setTasks(tasks);
+//         });
+//         setOnProjectSave(false);
+//     }
+// },[onProjectSave])
 
   const handleClick = (e) => {
 console.log("project id", e.target.value)
@@ -53,7 +77,7 @@ console.log("project id", e.target.value)
         })}
         ;
       </select>
-      <TaskTable tasks={tasks}/>
+      <TaskTable tasks={tasks} />
       
       
     </div>
