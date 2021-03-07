@@ -47,10 +47,7 @@ function AddTask(props) {
     setOpen(false);
   };
   useEffect((projectName) => {
-    //   const project = { projectName:};
-    //   const newProjects = [...projects];
-    //   newProjects.push(project);
-    //   console.log("new projects: " ,project)
+  
 
     fetch("http://localhost:3000/api/project/all", {
       method: "GET",
@@ -103,7 +100,7 @@ function AddTask(props) {
   };
 
   return (
-    <div>
+    <div className="addTask">
       <Button
         variant="outlined"
         handleClick={handleEditClick}
@@ -118,12 +115,13 @@ function AddTask(props) {
         onSubmit={handleSubmit}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Add a Task</DialogTitle>
         <DialogContent>
           <DialogContentText>
             To Add your list, please enter your Name, Date, Status and your
             comment here.
           </DialogContentText>
+          <div>
           <TextField
             autoFocus
             margin="dense"
@@ -135,17 +133,23 @@ function AddTask(props) {
             onChange={handleChange}
             value={formState.name}
           />
+          </div>
+          
+          <div>
           <TextField
-            autoFocus
-            margin="dense"
-            id="date"
-            label="date"
-            type="text"
-            fullWidth
+            id="datetime-local"
             name="date"
             onChange={handleChange}
             value={formState.date}
+            label="Date"
+            type="datetime-local"
+            defaultValue="2017-05-24T10:30"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
+          </div>
+          <div>
           <select
             id="select"
             name="status"
@@ -157,12 +161,16 @@ function AddTask(props) {
             <option>Completed</option>
             <option>None</option>
           </select>
-
-          <select id="projectId" onChange={handleChange} name="projectId">
+          </div>
+          
+<div>
+<select id="projectId" onChange={handleChange} name="projectId">
             {projects.map((project) => {
               return <option value={project._id}>{project.projectName}</option>;
             })}
           </select>
+</div>
+          <div>
           <TextField
             autoFocus
             margin="dense"
@@ -174,6 +182,8 @@ function AddTask(props) {
             onChange={handleChange}
             value={formState.comment}
           />
+          </div>
+          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

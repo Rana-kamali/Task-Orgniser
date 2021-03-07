@@ -33,6 +33,8 @@ const Edit = (props) => {
     }).then((response) => {
       console.log("Edit response:", response);
     });
+    setShow(false);
+    // props.setOnProjectSave(true);
     // props.submit(formState);
   };
 
@@ -69,18 +71,16 @@ const Edit = (props) => {
   }, [props.showEdit]);
 
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
 
   return (
 
     <div className="modal">
-      <Button variant="primary" onClick={handleShow}>
-       Modal
-      </Button>
+  
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -98,17 +98,21 @@ const Edit = (props) => {
           value={formState.name}
           onChange={handleChange}
         />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="date"
-          label="date"
-          type="text"
-          fullWidth
-          name="date"
-          value={formState.date}
-          onChange={handleChange}
-        />
+
+<TextField 
+        id="datetime-local"
+        name="date"
+        value={formState.date}
+        onChange={handleChange}
+        label="Date"
+        type="datetime-local"
+        defaultValue="2017-05-24T10:30"
+       
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+    
 
         <select
           id="select"

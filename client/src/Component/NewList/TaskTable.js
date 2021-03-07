@@ -8,7 +8,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
+import TextField from '@material-ui/core/TextField';
 import Edit from "./Action/Edit";
+
+
 
 const useStyles = makeStyles({
   table: {
@@ -40,8 +43,6 @@ const TaskTable = (props) => {
         setProjects(dropdown);
       });
   }, []);
-
-
 
   const classes = useStyles();
   const [list, setList] = useState({
@@ -97,7 +98,6 @@ const TaskTable = (props) => {
 
   const handleShow = () => setShow(true);
 
-
   return (
     <div>
       <TableContainer onSubmit={handleSubmit}>
@@ -122,9 +122,22 @@ const TaskTable = (props) => {
                 <TableCell name="name" align="right" onChange={handleChange}>
                   {el.name}
                 </TableCell>
-                <TableCell name="date" align="right" onChange={handleChange}>
+                {/* <TableCell name="date" align="right" onChange={handleChange}>
                   {el.date}
-                </TableCell>
+                </TableCell> */
+                }
+                <TextField className={classes.container}
+        id="datetime-local"
+        name="date" align="right" onChange={handleChange}
+        label="Date"
+        type="datetime-local"
+        defaultValue="2017-05-24T10:30"
+        className={classes.textField}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      >{el.date}</TextField>
+      
                 <TableCell name="status" align="right" onChange={handleChange}>
                   {el.status}
                 </TableCell>
@@ -156,6 +169,7 @@ const TaskTable = (props) => {
       </TableContainer>
       {showEdit && (
         <Edit
+        // setOnProjectSave={props.setOnProjectSave}
           projects={projects}
           showEdit={showEdit}
           onClick={() => {
