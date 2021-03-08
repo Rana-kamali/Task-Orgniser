@@ -33,7 +33,7 @@ const Edit = (props) => {
     }).then((response) => {
       console.log("Edit response:", response);
     });
-    setShow(false);
+    props.setShowEdit("");
     // props.setOnProjectSave(true);
     // props.submit(formState);
   };
@@ -71,9 +71,8 @@ const Edit = (props) => {
   }, [props.showEdit]);
 
 
-  const [show, setShow] = useState(true);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => props.setShowEdit("");
   // const handleShow = () => setShow(true);
 
 
@@ -82,7 +81,7 @@ const Edit = (props) => {
     <div className="modal">
   
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={props.showEdit} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>please edit your task</Modal.Title>
         </Modal.Header>

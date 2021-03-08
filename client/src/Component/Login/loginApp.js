@@ -1,60 +1,46 @@
 import React, { useState } from "react";
-import LoginForm from "./LoginForm"
-import {Welcome} from "../NewList/Welcome"
+import {useHistory} from "react-router-dom"
+import LoginForm from "./LoginForm";
+import { Welcome } from "../NewList/Welcome";
 // import{TaskForm} from "../NewList/TaskForm"
 // import { AddTask } from "../NewList/AddTask";
 
-
-
 function LoginApp(props) {
+const history = useHistory();
   const adminUser = {
     email: "admin@admin.com",
     password: "admin123",
   };
-  const [user, setUser] = useState({ name: "", email: "" });
   const [error, setError] = useState("");
 
   const Login = (details) => {
     console.log(details);
 
-    if(details.email === adminUser.email && details.password === adminUser.password){
-        console.log("you have logged in")
-        setUser({
-            name: details.name,
-            email: details.email,
-        })
+    if (
+      details.email === adminUser.email &&
+      details.password === adminUser.password
+    ) {
+      console.log("you have logged in");
+      props.setUser({
+        name: details.name,
+        email: details.email,
+      });
       props.setUserLoggedIn(true);
-    }else {
-        console.log("Details not match")
-        setError("Details not match")
+      window.localStorage.setItem("userLoggedin", true);
+      history.replace("/")
+
+    } else {
+      console.log("Details not match");
+      setError("Details not match");
     }
   };
 
-  const logout = () => {
-    console.log("loggedOut");
-    setUser ({name: "", email: ""  })
-    props.setUserLoggedIn(false);
-  };
-
-
-  return <div className="Login">
-{(user.email !=="") ? (
-<div className = "welcome">
-    <h2> Welcome, <p3>{user.name}</p3></h2>
-<button onClick={logout}>Logout</button>
-<Welcome/>
-{/* <TaskForm projects={[]}/> */}
-{/* <AddTask projects={[]}/> */}
-
-
-</div>
-
-):(
-    <LoginForm Login={Login} error= {error}/>
-)}
-
-
-  </div>;
+  return (
+    <div className="Login">
+      
+        <LoginForm Login={Login} error={error} />
+    </div>
+  );
 }
 
 export default LoginApp;

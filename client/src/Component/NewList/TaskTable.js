@@ -105,7 +105,7 @@ const TaskTable = (props) => {
           <caption>Please see your weekly tasks</caption>
           <TableHead>
             <TableRow>
-              <TableCell align="right">Name</TableCell>
+              <TableCell align="right"></TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Date</TableCell>
               <TableCell align="right">Status</TableCell>
@@ -126,6 +126,7 @@ const TaskTable = (props) => {
                   {el.date}
                 </TableCell> */
                 }
+                <TableCell>
                 <TextField className={classes.container}
         id="datetime-local"
         name="date" align="right" onChange={handleChange}
@@ -136,7 +137,7 @@ const TaskTable = (props) => {
         InputLabelProps={{
           shrink: true,
         }}
-      >{el.date}</TextField>
+      >{el.date}</TextField></TableCell>
       
                 <TableCell name="status" align="right" onChange={handleChange}>
                   {el.status}
@@ -175,6 +176,7 @@ const TaskTable = (props) => {
           onClick={() => {
             setShowEdit("");
           }}
+          setShowEdit={setShowEdit}
 
         />
       )}
