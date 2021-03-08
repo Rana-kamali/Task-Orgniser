@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import Modal from 'react-bootstrap/Modal'
+import Container from "@material-ui/core/Container";
 
 
 import TextField from "@material-ui/core/TextField";
@@ -17,9 +18,7 @@ const Edit = (props) => {
     projectId: "",
   });
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+ 
 
   const handleSubmit = (e) => {
     console.log("submit button click");
@@ -34,8 +33,7 @@ const Edit = (props) => {
       console.log("Edit response:", response);
     });
     props.setShowEdit("");
-    // props.setOnProjectSave(true);
-    // props.submit(formState);
+  
   };
 
   const handleChange = (e) => {
@@ -78,9 +76,10 @@ const Edit = (props) => {
 
   return (
 
-    <div className="modal">
-  
+    
 
+    <div className="modal">
+      <Container maxWidth="sm">
       <Modal show={props.showEdit} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>please edit your task</Modal.Title>
@@ -112,7 +111,7 @@ const Edit = (props) => {
         }}
       />
     
-
+<div>
         <select
           id="select"
           name="status"
@@ -124,12 +123,9 @@ const Edit = (props) => {
           <option>Completed</option>
           <option>None</option>
         </select>
-
-        <select id="projectId" name="projectId">
-          {props.projects.map((project) => {
-            return <option value={project._id}>{project.projectName}</option>;
-          })}
-        </select>
+        </div>
+      
+       
         <TextField
           autoFocus
           margin="dense"
@@ -141,6 +137,8 @@ const Edit = (props) => {
           value={formState.comment}
           onChange={handleChange}
         />
+        
+        
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" color="primary" onClick={handleClose}>
@@ -151,68 +149,11 @@ const Edit = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
+      </Container>
     </div>
-    // <div>
-    //   <form onSubmit={handleSubmit}>
-    //     <TextField
-    //       autoFocus
-    //       margin="dense"
-    //       id="name"
-    //       label="Name"
-    //       type="text"
-    //       fullWidth
-    //       name="name"
-    //       value={formState.name}
-    //       onChange={handleChange}
-    //     />
-    //     <TextField
-    //       autoFocus
-    //       margin="dense"
-    //       id="date"
-    //       label="date"
-    //       type="text"
-    //       fullWidth
-    //       name="date"
-    //       value={formState.date}
-    //       onChange={handleChange}
-    //     />
 
-    //     <select
-    //       id="select"
-    //       name="status"
-    //       value={formState.status}
-    //       onChange={handleChange}
-    //     >
-    //       <option>Assigned</option>
-    //       <option>Working</option>
-    //       <option>Completed</option>
-    //       <option>None</option>
-    //     </select>
-
-    //     <select id="projectId" name="projectId">
-    //       {props.projects.map((project) => {
-    //         return <option value={project._id}>{project.projectName}</option>;
-    //       })}
-    //     </select>
-    //     <TextField
-    //       autoFocus
-    //       margin="dense"
-    //       id="comment"
-    //       label="comment"
-    //       type="text"
-    //       fullWidth
-    //       name="comment"
-    //       value={formState.comment}
-    //       onChange={handleChange}
-    //     />
-    //     <Button onClick={handleClose} color="primary">
-    //       Cancel
-    //     </Button>
-    //     <Button onClick={handleSubmit} color="primary">
-    //       Save Changes
-    //     </Button>
-    //   </form>
-    // </div>
+    
+    
   );
 };
 export default Edit;
