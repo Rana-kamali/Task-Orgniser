@@ -1,11 +1,10 @@
 # Task-Orgniser
-<<<<<<< orgniser
 #### General Assembly assignment 
 ## Goal
 The goal of this project is to create a simple TO-DO list app with the following Kyes: Contains a tab bar with Login tab You need to login as admin There are two tabs Add Task and Project list In project tab there is edit and delete button which you can control the list
 ### Technologies:
 Javascript (ES6)
-React
+ReactJS
 MongoDB
 Express.js
 ### Installation
