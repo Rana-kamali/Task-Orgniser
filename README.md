@@ -1,7 +1,6 @@
 # Task-Orgniser
-#### General Assembly assignment 
 ## Goal
-The goal of this project is to create a simple TO-DO list app with the following Kyes:<br />
+The goal of this project is to create a simple task orgniser app with the following Kyes:<br />
 Contains a tab bar with Login tab You need to login as admin.<br />
 There are two tabs Add Task and Project list:<br />
 In project list tab there is edit and delete button which you can control the project.<br />
