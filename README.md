@@ -20,9 +20,9 @@ In project list tab there is edit and delete button which you can control the pr
  (https://github.com/Rana-kamali/Task-Orgniser.git)<br /> In your terminal
 - directory cd Task-Orgniser
 - npm install
--cd client
--npm start 
--cd server
--npm start
+- cd client
+- npm start 
+- cd server
+- npm start
 ### Contributing
 Pull requests are welcome.
