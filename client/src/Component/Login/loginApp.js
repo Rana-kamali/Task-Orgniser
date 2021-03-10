@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import { Welcome } from "../NewList/Welcome";
 
-// import{TaskForm} from "../NewList/TaskForm"
-// import { AddTask } from "../NewList/AddTask";
-
 function LoginApp(props) {
-const history = useHistory();
+  const history = useHistory();
   const adminUser = {
     email: "admin@admin.com",
     password: "admin123",
@@ -28,8 +25,7 @@ const history = useHistory();
       });
       props.setUserLoggedIn(true);
       window.localStorage.setItem("userLoggedin", true);
-      history.replace("/")
-
+      history.replace("/");
     } else {
       console.log("Details not match");
       setError("Details not match");
@@ -38,8 +34,7 @@ const history = useHistory();
 
   return (
     <div className="Login">
-      
-        <LoginForm Login={Login} error={error} />
+      <LoginForm Login={Login} error={error} />
     </div>
   );
 }

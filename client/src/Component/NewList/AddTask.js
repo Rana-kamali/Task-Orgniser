@@ -31,7 +31,7 @@ function AddTask(props) {
     };
     console.log("form state", formState);
     const newTasks = { ...formState };
-    // newTasks.push(newTask);
+
     setFormState(newTasks);
     fetch("http://localhost:3000/api/todo/add", {
       method: "POST",
@@ -72,7 +72,6 @@ function AddTask(props) {
     setFormState(newState);
   };
 
-  ///------------get index---------
   const handleEditClick = (index) => {
     console.log("get index", index);
     const taskIndex = formState[index];

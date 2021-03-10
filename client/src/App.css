@@ -1,10 +1,7 @@
 body {
-  background-image: url("https://www.vippng.com/png/full/25-251657_unycom-customers-map-high-resolution-world-map-vector.png");
-  background-color: #cccccc;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-size: auto;
   background-size: cover;
-
 }
 
 .App {
@@ -45,14 +42,14 @@ body {
     transform: rotate(360deg);
   }
 }
-.MuiButton-containedSecondary{
+.MuiButton-containedSecondary {
   margin-top: 400px;
   width: 250px;
   height: 50px;
-text-align: center;
-position: absolute;
+  text-align: center;
+  position: absolute;
 }
-.landing{
+.landing {
   margin: 0;
   position: absolute;
   top: 70%;
@@ -61,23 +58,18 @@ position: absolute;
   transform: translate(-50%, -50%);
 }
 
-.login{
+.login {
   height: 100%;
   width: 100%;
-  
 }
-form{
-  height: 100%;
-  width: 100%;
-  background-color:yellow;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-p3{
+
+p3 {
   color: #f50057;
 }
-.modal{
+.modal {
   background-color: white;
   margin-top: 50px;
+}
+.landingBG {
+  background-color: #282c34;
 }
