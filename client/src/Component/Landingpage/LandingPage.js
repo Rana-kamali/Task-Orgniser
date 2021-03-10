@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { makeStyles } from "@material-ui/core/styles";
 import LoginApp from "../Login/loginApp";
 import Button from "@material-ui/core/Button";
 import {
@@ -30,22 +29,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const useStyles2 = makeStyles((theme) => ({
-//   root: {
-//     "& > *": {
-//       margin: theme.spacing(1),
-//     },
-//   },
-// }));
-
 const LandingPage = () => {
   const classes = useStyles();
   const history = useHistory();
   const loggedIn = window.localStorage.getItem("userLoggedin") ? true : false;
   const [userLoggedIn, setUserLoggedIn] = useState(loggedIn);
   const [user, setUser] = useState({ name: "", email: "" });
-
-  // const classes = useStyles();
 
   const logout = () => {
     console.log("loggedOut");
@@ -68,20 +57,20 @@ const LandingPage = () => {
             <Typography variant="h9" className={classes.title}>
               Welcome {user.name}
             </Typography>
-            
+
             {!userLoggedIn && (
-            <Link to="/login">
-              {" "}
-              <Button variant="contained" color="secondary">
-                Login here
+              <Link to="/login">
+                {" "}
+                <Button variant="contained" color="secondary">
+                  Login here
+                </Button>
+              </Link>
+            )}
+            {userLoggedIn && (
+              <Button onClick={logout} variant="contained" color="secondary">
+                Log out
               </Button>
-            </Link>
-          )}
-           {userLoggedIn && (
-            <Button onClick={logout} variant="contained" color="secondary">
-              Log out
-            </Button>
-          )}
+            )}
           </Toolbar>
         </AppBar>
       </div>

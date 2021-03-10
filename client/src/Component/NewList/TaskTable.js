@@ -8,10 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 import Edit from "./Action/Edit";
-
-
 
 const useStyles = makeStyles({
   table: {
@@ -38,8 +36,6 @@ const TaskTable = (props) => {
         return response.json();
       })
       .then((dropdown, i) => {
-        // console.log("dropdownData:", dropdown);
-
         setProjects(dropdown);
       });
   }, []);
@@ -73,25 +69,22 @@ const TaskTable = (props) => {
     setTasks(props.tasks);
   }, [props.tasks]);
 
-  
-
   const handleEdit = (id) => {
     console.log("id: ", id);
     setShowEdit(id);
   };
-  
+
   const handleDelete = (id) => {
     console.log("id: ", id);
     setShowDelete(id);
-    fetch(`http://localhost:3000/api/todo/delete/${id}`,{
-                  method:"Delete",
-                  headers:{
-              "Content-Type": "application/json",
-      
-                  }
-              }).then((response) =>{
-                  console.log("deleted")
-              })
+    fetch(`http://localhost:3000/api/todo/delete/${id}`, {
+      method: "Delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      console.log("deleted");
+    });
   };
 
   const [show, setShow] = useState(false);
@@ -122,23 +115,26 @@ const TaskTable = (props) => {
                 <TableCell name="name" align="right" onChange={handleChange}>
                   {el.name}
                 </TableCell>
-                {/* <TableCell name="date" align="right" onChange={handleChange}>
-                  {el.date}
-                </TableCell> */
-                }
+
                 <TableCell>
-                <TextField className={classes.container}
-        id="datetime-local"
-        name="date" align="right" onChange={handleChange}
-        label="Date"
-        type="datetime-local"
-        defaultValue="2017-05-24T10:30"
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      >{el.date}</TextField></TableCell>
-      
+                  <TextField
+                    className={classes.container}
+                    id="datetime-local"
+                    name="date"
+                    align="right"
+                    onChange={handleChange}
+                    label="Date"
+                    type="datetime-local"
+                    defaultValue="2017-05-24T10:30"
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  >
+                    {el.date}
+                  </TextField>
+                </TableCell>
+
                 <TableCell name="status" align="right" onChange={handleChange}>
                   {el.status}
                 </TableCell>
@@ -146,14 +142,10 @@ const TaskTable = (props) => {
                   {el.comment}
                 </TableCell>
                 <TableCell name="edit" align="right">
-                  <EditIcon 
-                 
-                 
+                  <EditIcon
                     onClick={() => {
-                    handleEdit(el._id);
+                      handleEdit(el._id);
                     }}
-                    
-                    
                   />
                 </TableCell>
                 <TableCell name="delete" align="right" type="submit">
@@ -170,14 +162,12 @@ const TaskTable = (props) => {
       </TableContainer>
       {showEdit && (
         <Edit
-        // setOnProjectSave={props.setOnProjectSave}
           projects={projects}
           showEdit={showEdit}
           onClick={() => {
             setShowEdit("");
           }}
           setShowEdit={setShowEdit}
-
         />
       )}
     </div>

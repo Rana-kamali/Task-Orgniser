@@ -3,11 +3,7 @@
   padding: 0;
 }
 body {
-  /* background-image: url("https://www.vippng.com/png/full/25-251657_unycom-customers-map-high-resolution-world-map-vector.png"); */
-
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-
 }
 .form-inner {
   font-family: sans-serif;
@@ -28,15 +24,14 @@ input {
   text-align: left;
 }
 .loginbtn {
-   margin-top: 20px;
+  margin-top: 20px;
   width: 114.2px;
   height: 36px;
   text-align: right;
   cursor: pointer;
   display: block;
   margin-left: auto;
-  margin-right: auto
-
+  margin-right: auto;
 }
 .error {
   color: #d8000c;
@@ -48,26 +43,25 @@ input {
   background-image: url("https://i.imgur.com/GnyDvKN.png");
   background-repeat: no-repeat;
 }
-h2{
+h2 {
   text-align: center;
   size: 16px;
   margin-top: 50px;
 }
-p{
+p {
   text-align: center;
   size: 10px;
   cursor: pointer;
 }
-.create-task{
- text-align: right;
+.create-task {
+  text-align: right;
 }
-.MuiButton-label{
+.MuiButton-label {
   width: 100px;
 }
-.modal{
+.modal {
   margin-top: 30px;
   padding: 1rem;
   background-color: #fff;
   border-radius: 3px black;
-  }
-
+}

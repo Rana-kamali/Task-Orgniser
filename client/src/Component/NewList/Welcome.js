@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AddTask } from "./AddTask";
 import ProjectList from "./ProjectList";
-// import{TaskList} from "./TaskList"
 
 const Welcome = () => {
   return (
@@ -21,10 +20,9 @@ const Welcome = () => {
         <Route path="/projectList">
           <ProjectList />
         </Route>
-
       </Switch>
     </Router>
   );
 };
-///test
+
 export { Welcome };
