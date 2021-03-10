@@ -16,8 +16,8 @@ In project list tab there is edit and delete button which you can control the pr
 
 
 ### Installation
-- Clone the repository to your local machine:
-- git@github.com:Rana-kamali/Task-Orgniser.git In your terminal
+- Clone the repository to your local machine
+ git@github.com:Rana-kamali/Task-Orgniser.git<br /> In your terminal
 - directory cd Task-Orgniser
 - npm install
 -cd client
