@@ -1,16 +1,15 @@
+import React from "react";
 
-import React from "react"
-import './App.css';
-import LoginApp from "./Component/Login/loginApp"
+import LandingPage from "./Component/Landingpage/LandingPage";
+import Container from "@material-ui/core/Container";
 
 function App() {
   return (
-    <div>
-<LoginApp/>
-   
-    </div>
-    
-  )
+  
+    <Container maxWidth="lg">
+      <LandingPage />
+    </Container>
+  );
 }
 
 export default App;

@@ -3,7 +3,6 @@
   padding: 0;
 }
 body {
-
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .form-inner {
@@ -17,6 +16,32 @@ body {
   padding: 20px;
   margin-top: 30px;
 }
+h5{
+  color: #d54d7b; 
+  font-family: "Great Vibes", 
+  cursive; 
+  font-size: 30px; 
+  line-height: 30px; 
+  font-weight: normal; 
+  margin-bottom: 20px; 
+  margin-top: 40px; 
+  text-align: left; 
+  text-shadow: 0 1px 1px #fff;
+
+}
+p{
+  color: #111; 
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 16px; 
+  line-height: 28px; 
+  margin: 0 0 48px;
+  width: 500px;
+  height: 250px;
+}
+img{
+  width: 100%;
+    max-width: 500px;
+}
 input {
   margin-top: 20px;
   margin-bottom: 20 px;
@@ -24,15 +49,15 @@ input {
   height: 36px;
   text-align: left;
 }
-button {
+.loginbtn {
   margin-top: 20px;
-  margin-bottom: 20px;
-  width: 396px;
-  height: 24px;
-  text-align: center;
+  width: 114.2px;
+  height: 36px;
+  text-align: right;
   cursor: pointer;
-  margin-left: 100px;
-
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .error {
   color: #d8000c;
@@ -44,16 +69,21 @@ button {
   background-image: url("https://i.imgur.com/GnyDvKN.png");
   background-repeat: no-repeat;
 }
-h2{
+h2 {
   text-align: center;
   size: 16px;
   margin-top: 50px;
 }
-p{
-  text-align: center;
-  size: 10px;
-  cursor: pointer;
+
+.create-task {
+  text-align: right;
 }
-.create-task{
- text-align: right;
+.MuiButton-label {
+  width: 100px;
+}
+.modal {
+  margin-top: 30px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 3px black;
 }
