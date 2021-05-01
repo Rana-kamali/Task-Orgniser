@@ -8,6 +8,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
+
 function AddTask(props) {
   const history = useHistory();
   const [open, setOpen] = React.useState(true);
@@ -46,24 +47,7 @@ function AddTask(props) {
       history.replace("/");
     });
   };
-  // useEffect((projectName) => {
-  //   fetch("http://localhost:3000/api/project/all", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((response) => {
-  //       console.log("Task respond: ", response);
-  //       return response.json();
-  //     })
-  //     .then((dropdown, i) => {
-  //       console.log("dropdownData:", dropdown);
 
-  //       setProjects(dropdown);
-  //       setOpen(true);
-  //     });
-  // }, []);
 
   const handleChange = (e) => {
     const newState = { ...formState };
@@ -100,6 +84,7 @@ function AddTask(props) {
         <DialogContent>
           To Add your list, please enter your Name, Date, Status and your
           comment here.
+          
           <TextField
             autoFocus
             margin="dense"
