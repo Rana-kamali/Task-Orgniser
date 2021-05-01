@@ -31,8 +31,7 @@ function LoginForm(props) {
         name: details.name,
         email: details.email,
       });
-      props.setUserLoggedIn(true);
-            window.localStorage.setItem("userLoggedin", true);
+      props.setUserLoggedIn(true);      
       history.replace("/");
       return response.json();
     })

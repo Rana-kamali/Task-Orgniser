@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import LoginApp from "../Login/loginApp";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -9,16 +8,13 @@ import {
   useHistory,
 } from "react-router-dom";
 
-import { Welcome } from "../NewList/Welcome";
-import { userHistory } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 // import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
-import LoginForm from "../Login/LoginForm";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -42,17 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const LandingPage = (props) => {
   const classes = useStyles();
   const history = useHistory();
-  // const loggedIn = window.localStorage.getItem("userLoggedin") ? true : false;
-  // const [userLoggedIn, setUserLoggedIn] = useState(loggedIn);
-  // const [user, setUser] = useState({ name: "", email: "" });
 
-  const logout = () => {
-    console.log("loggedOut");
-    props.setUser({ name: "", email: "" });
-    props.setUserLoggedIn(false);
-    window.localStorage.setItem("userLoggedin", "");
-    history.replace("/");
-  };
 
   return (
     <div>
@@ -69,28 +55,13 @@ const LandingPage = (props) => {
               Welcome {user.name}
             </Typography> */}
 
-            {props.userLoggedIn && (
-              <Button onClick={logout} variant="contained" color="secondary">
-                Log out
-              </Button>
-            )}
+            
           </Toolbar>
         </AppBar>
       </div>
       <div className="landingBG">
         <div className="landing">
-          {/* <Switch>
-            <Route exact path="/login">
-              <LoginForm
-                setUserLoggedIn={setUserLoggedIn}
-                setUser={setUser}
-                user={user}
-              />
-            </Route>
-            <Route exact path="/task/:id"></Route>
-            
-          </Switch>
-          <Route exact path="/"> {userLoggedIn && <Welcome />}</Route> */}
+         
         </div>
         <div>
           <h5>Stay organized. Get more done</h5>
@@ -117,6 +88,7 @@ const LandingPage = (props) => {
             <img
               className={classes.paper}
               src="https://thestaysanemom.com/assets/house-task-organizer-62245a0fd03694fcd47e355f5573663d62cad7ffae2e05b5ee44549e26d766a0.jpg"
+              alt="altText"
             ></img>
           </Grid>
         </Grid>
