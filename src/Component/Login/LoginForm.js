@@ -49,6 +49,9 @@ function LoginForm(props) {
       <div className="login">
         <form onSubmit={submitHandler}>
           <div className="form-inner">
+            
+            
+            <h2>LET'S MAKE THE WORLD MORE PRODUCTIVE, TOGETHER.</h2>
             <h2>Login</h2>
             {error !== "" ? <div className="error">{error}</div> : ""}
          
@@ -73,9 +76,6 @@ function LoginForm(props) {
                 }
                 value={details.email}
               />
-           
-           
-             
               <TextField
                 type="password"
                 name="password"
@@ -96,11 +96,17 @@ function LoginForm(props) {
               >
                 LOGIN
               </Button>
+              
             </div>
+            <div></div>
+            
           </div>
         </form>
+        
       </div>
+      
     </Container>
+    
   );
 }
 

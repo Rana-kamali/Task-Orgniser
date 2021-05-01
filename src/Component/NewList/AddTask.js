@@ -31,13 +31,13 @@ function AddTask(props) {
     };
     console.log("form state", formState);
     const newTasks = { ...formState };
-    const auth_token = window.localStorage.getItem('token');
+    const auth_token = window.localStorage.getItem("token");
     setFormState(newTasks);
     fetch("/api/todos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "authorization": `Bearer ${auth_token}`
+        authorization: `Bearer ${auth_token}`,
       },
       body: JSON.stringify(newTasks),
     }).then((response) => {
@@ -98,38 +98,31 @@ function AddTask(props) {
       >
         <DialogTitle id="form-dialog-title">Add a Task</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To Add your list, please enter your Name, Date, Status and your
-            comment here.
-          </DialogContentText>
-          <div>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Name"
-              type="text"
-              fullWidth
-              name="name"
-              onChange={handleChange}
-              value={formState.name}
-            />
-          </div>
-
-          <div>
-            <TextField
-              id="datetime-local"
-              name="date"
-              onChange={handleChange}
-              value={formState.date}
-              label="Date"
-              type="datetime-local"
-              defaultValue="2017-05-24T10:30"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </div>
+          To Add your list, please enter your Name, Date, Status and your
+          comment here.
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            type="text"
+            fullWidth
+            name="name"
+            onChange={handleChange}
+            value={formState.name}
+          />
+          <TextField
+            id="datetime-local"
+            name="date"
+            onChange={handleChange}
+            value={formState.date}
+            label="Date"
+            type="datetime-local"
+            defaultValue="2017-05-24T10:30"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
           <div>
             <select
               id="select"
@@ -141,16 +134,6 @@ function AddTask(props) {
               <option>Working</option>
               <option>Completed</option>
               <option>None</option>
-            </select>
-          </div>
-
-          <div>
-            <select id="projectId" onChange={handleChange} name="projectId">
-              {projects.map((project) => {
-                return (
-                  <option value={project._id}>{project.projectName}</option>
-                );
-              })}
             </select>
           </div>
           <div>

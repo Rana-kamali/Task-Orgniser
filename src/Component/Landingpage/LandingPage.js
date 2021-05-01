@@ -85,11 +85,6 @@ const LandingPage = () => {
         <div className="landing">
           <Switch>
             <Route path="/login">
-              {/* <LoginApp
-                setUserLoggedIn={setUserLoggedIn}
-                setUser={setUser}
-                user={user}
-              /> */}
               <LoginForm
                 setUserLoggedIn={setUserLoggedIn}
                 setUser={setUser}
@@ -124,7 +119,7 @@ const LandingPage = () => {
           </p></Paper>
         </Grid>
         <Grid item xs={6}>
-          <img className={classes.paper} src='https://neilpatel.com/wp-content/uploads/2017/09/image-editing-tools.jpg'></img>
+          <img className={classes.paper} src='https://thestaysanemom.com/assets/house-task-organizer-62245a0fd03694fcd47e355f5573663d62cad7ffae2e05b5ee44549e26d766a0.jpg'></img>
         </Grid>
       </Grid>
       {!userLoggedIn && (
