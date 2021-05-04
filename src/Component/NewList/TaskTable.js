@@ -41,7 +41,21 @@ const [todos, setTodos]= useState([]);
       });
   }, []);
 
-
+  const reloadTodos = ()=>{
+    fetch("/api/todos", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log("Task respond: ", response);
+        return response.json();
+      })
+      .then((dropdown, i) => {
+        setTodos(dropdown);
+      });
+  }
 
   const classes = useStyles();
   const [list, setList] = useState({
@@ -165,7 +179,7 @@ const [todos, setTodos]= useState([]);
         </Table>
       </TableContainer>
       {showEdit && (
-        <Edit
+        <Edit reload={reloadTodos}
           projects={projects}
           showEdit={showEdit}
           onClick={() => {
